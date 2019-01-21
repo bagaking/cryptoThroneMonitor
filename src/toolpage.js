@@ -117,10 +117,10 @@ class ToolPage extends React.Component {
           break;
         case 'faithv3':
           const period = await eosplayer.chain.checkTableItem(this.props.code, 'counters', this.props.code, 'faithv3');
-          ret = await eosplayer.chain.checkTableMore(this.props.code, 'faithv3', period.val, 'key');
+          ret = await eosplayer.chain.checkTableMore(this.props.code, 'faithv3', period.val, 'id');
           console.log(key, period, ret);
           this.setState(
-            {content: createList(ret, ` 逻辑合约分红表 当前期数:${period} 手动查询特定期数, 命令 : eosplayer.chain.checkTableMore(${this.props.code}, 'faithv3', [期数], 'key')`)},
+            {content: createList(ret, ` 逻辑合约分红表 当前期数:${period.val} 手动查询特定期数, 命令 : eosplayer.chain.checkTableMore(${this.props.code}, 'faithv3', [期数], 'key')`)},
           );
           break;
         case 'poolprizev3':
