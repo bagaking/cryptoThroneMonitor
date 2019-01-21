@@ -1,3 +1,1 @@
-# eostool
-
-eos tools
+# Crypto Throne Monitor
