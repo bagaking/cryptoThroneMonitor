@@ -38,15 +38,32 @@ const parseItem = (item) => {
   return item_ret;
 };
 
-const createList = data => (
+const createList = (data, desc) => (
   <List
     class="info_list"
     size="small"
-    header={<div>共({data.length})条记录</div>}
+    header={(
+      <div>
+共(
+        {data.length}
+)条记录 (
+        {desc}
+)
+      </div>
+)}
     footer={<div>------</div>}
     bordereditem
     dataSource={data}
-    renderItem={(item, i) => (<List.Item><div class="info_index">{i}.</div> {parseItem(item)}</List.Item>)}
+    renderItem={(item, i) => (
+      <List.Item>
+        <div className="info_index">
+          {i}
+.
+        </div>
+        {' '}
+        {parseItem(item)}
+      </List.Item>
+    )}
   />
 );
 
@@ -75,29 +92,46 @@ class ToolPage extends React.Component {
       switch (key) {
         case 'pretonarts11':
           ret = await eosplayer.chain.checkTableMore('pretonarts11', 'privilegev11', 'pretonarts11', 'user');
-          console.log(ret);
-          this.setState({
-            content: createList(ret),
-          });
+          console.log(key, ret);
+          this.setState({content: createList(ret, '预约合约 pretonarts11')});
           break;
         case 'attributes':
           ret = await eosplayer.chain.checkTableMore(this.props.code, 'attributes', this.props.code, 'key');
-          console.log(ret);
-          this.setState({
-            content: createList(ret),
-          });
+          console.log(key, ret);
+          this.setState({content: createList(ret, '逻辑合约配置')});
           break;
         case 'activatev1':
+          ret = await eosplayer.chain.checkTableMore(this.props.code, 'activatev1', this.props.code, 'key');
+          console.log(key, ret);
+          this.setState({content: createList(ret, '逻辑合约激活表')});
           break;
         case 'privilegev12':
+          ret = await eosplayer.chain.checkTableMore(this.props.code, 'privilegev12', this.props.code, 'user');
+          console.log(key, ret);
+          this.setState({content: createList(ret, '逻辑合约特权表')});
           break;
         case 'guildv3':
+          ret = await eosplayer.chain.checkTableMore(this.props.code, 'guildv3', this.props.code, 'id');
+          console.log(key, ret);
+          this.setState({content: createList(ret, '逻辑合约联盟表')});
           break;
         case 'faithv3':
+          const period = await eosplayer.chain.checkTableItem(this.props.code, 'counters', this.props.code, 'faithv3');
+          ret = await eosplayer.chain.checkTableMore(this.props.code, 'faithv3', period.val, 'key');
+          console.log(key, period, ret);
+          this.setState(
+            {content: createList(ret, ` 逻辑合约分红表 当前期数:${period} 手动查询特定期数, 命令 : eosplayer.chain.checkTableMore(${this.props.code}, 'faithv3', [期数], 'key')`)},
+          );
           break;
         case 'poolprizev3':
+          ret = await eosplayer.chain.checkTableMore(this.props.code, 'poolprizev3', this.props.code, 'key');
+          console.log(key, ret);
+          this.setState({content: createList(ret, '逻辑合约奖池')});
           break;
         case 'costfuncv3':
+          ret = await eosplayer.chain.checkTableMore(this.props.code, 'costfuncv3', this.props.code, 'id');
+          console.log(key, ret);
+          this.setState({content: createList(ret, '逻辑合约消费记录')});
           break;
       }
     };
