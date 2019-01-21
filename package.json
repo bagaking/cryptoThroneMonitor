@@ -1,0 +1,53 @@
+{
+  "name": "eostool",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "webpack -p",
+    "dev": "webpack-dev-server --config ./webpack.config.js --mode development",
+    "serve": "webpack --watch & hserve ./dist"
+  },
+  "author": "kinghand@foxmail.com",
+  "license": "MIT",
+  "dependencies": {
+    "antd": "^3.10.7",
+    "axios": "^0.18.0",
+    "babel-polyfill": "^6.26.0",
+    "react": "^16.6.3",
+    "react-dom": "^16.6.3",
+    "react-hot-loader": "^4.3.12",
+    "react-marked-markdown": "^1.4.6",
+    "react-redux": "^6.0.0",
+    "react-router-dom": "^4.3.1",
+    "redux": "^4.0.1"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.1.6",
+    "@babel/plugin-proposal-class-properties": "^7.1.0",
+    "@babel/preset-env": "^7.1.6",
+    "@babel/preset-react": "^7.0.0",
+    "autoprefixer": "^9.3.1",
+    "babel-loader": "^8.0.4",
+    "babel-plugin-import": "^1.11.0",
+    "css-loader": "^1.0.1",
+    "eslint": "^5.9.0",
+    "eslint-config-airbnb": "^17.1.0",
+    "eslint-loader": "^2.1.1",
+    "eslint-plugin-babel": "^5.2.1",
+    "eslint-plugin-import": "^2.14.0",
+    "eslint-plugin-jsx-a11y": "^6.1.2",
+    "eslint-plugin-react": "^7.11.1",
+    "file-loader": "^2.0.0",
+    "hserve": "^0.0.1-beta.7",
+    "json-loader": "^0.5.7",
+    "less": "^3.8.1",
+    "less-loader": "^4.1.0",
+    "postcss-loader": "^3.0.0",
+    "style-loader": "^0.23.1",
+    "webpack": "^4.25.1",
+    "webpack-cli": "^3.1.2",
+    "webpack-dev-server": "^3.1.10"
+  }
+}

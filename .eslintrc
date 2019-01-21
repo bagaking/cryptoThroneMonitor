@@ -1,0 +1,27 @@
+{
+  "extends": "airbnb",
+  "env":{
+    "browser": true
+  },
+  "rules": {
+    "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
+    "react/jsx-indent": 1,
+    "babel/new-cap": 1,
+    "babel/no-invalid-this": 1,
+    "babel/object-curly-spacing": 1,
+
+    "babel/semi": 1,
+    "babel/no-unused-expressions": 1,
+    "babel/valid-typeof": 1,
+    "generator-star-spacing": 0,
+    "no-useless-constructor": 0
+  },
+  "plugins": [
+    "babel"
+  ],
+  "parserOptions": {
+    "ecmaFeatures": {
+      "experimentalObjectRestSpread": true
+    }
+  }
+}
