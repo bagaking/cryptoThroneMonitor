@@ -6,7 +6,7 @@ import Path from 'path';
 import React from 'react';
 
 import {
-  Card, Icon, BackTop, Layout, Tree, Collapse, Input, Col, Modal, Button,
+  Card, Icon, BackTop, Layout, Tree, Collapse, Input, Col, Modal, Button, Menu
 } from 'antd';
 
 import {MarkdownPreview} from 'react-marked-markdown';
@@ -119,10 +119,10 @@ class ToolPage extends React.Component {
           <SwitchNetwork />
         </Header>
         <Layout style={{ height: '100vh' }}>
-          <Sider>
+          <Sider  style={{ background: '#566270', color: '#FFFFF3' }}>
             <Card
               style={{
-                width: '101wh', height: '101vh', background: '#566270', color: '#FFFFF3' }}
+                width: '100wh', height: 320, background: '#566270', color: '#FFFFF3' }}
               loading={!this.props.accountInfo}
             >
               {this.props.accountInfo
@@ -158,6 +158,16 @@ class ToolPage extends React.Component {
                 : <snap>loading</snap>
                 }
             </Card>
+            <Menu  style={{ background: '#566270', color: '#FFFFF3', maxHeight: '100vh' }} defaultSelectedKeys={['attributes']}>
+                <Menu.Item key="pretonarts11">预约查询</Menu.Item>
+                <Menu.Item key="attributes">配置查询</Menu.Item>
+                <Menu.Item key="activatev1">激活查询</Menu.Item>
+                <Menu.Item key="privilegev12">特权查询</Menu.Item>
+                <Menu.Item key="guildv3">联盟查询</Menu.Item>
+                <Menu.Item key="faithv3">分红查询</Menu.Item>
+                <Menu.Item key="poolprizev3">奖池查询</Menu.Item>
+                <Menu.Item key="costfuncv3">消费记录</Menu.Item>
+            </Menu>
           </Sider>
           <Content style={{margin: '0 0 0', overflow: 'initial', height: '100vh', overflow: 'auto', backgroundImage: `url(${ctbg})`, backgroundSize: '100% 100%'}}>
             {/*<Collapse accordion defaultActiveKey={[this.props.match.params.tab || '3']}>*/}
