@@ -24,6 +24,7 @@ class SwitchNetwork extends React.Component {
 
     this.networkMenuClick = async (e) => {
       eosplayer.switchNetwork(e.key);
+      this.render();
     };
 
     this.codeClick = async (e) => {
@@ -90,7 +91,7 @@ class SwitchNetwork extends React.Component {
     // this.props.updateIdentity(await eosplayer.getIdentity());
     // this.props.updateAccountInfo(await eosplayer.getAccountInfo());
     await eosplayer.getScatterAsync();
-    this.codeClick({key: codes[0]});
+    if (!!this.props.code && this.props.code !== '') { this.codeClick({key: codes[0]}); }
   }
 
   render() {

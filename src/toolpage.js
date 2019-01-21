@@ -211,7 +211,7 @@ class ToolPage extends React.Component {
           background: 'transparent', backgroundImage: `url(${ctbg_bar})`, padding: '0 24px', minWidth: '100vw', color: '#FFFFF3', backgroundSize: '100% 100%',
         }}
         >
-            CryptoThrone Operation Platform
+            Crypto Throne Monitor
           {' '}
           <SwitchNetwork />
         </Header>
