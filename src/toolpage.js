@@ -213,7 +213,7 @@ class ToolPage extends React.Component {
         >
             Crypto Throne Monitor
           {' '}
-          <SwitchNetwork />
+          <SwitchNetwork tab={this.props.match.params.tab} />
         </Header>
         <Layout style={{height: '100vh'}}>
           <Sider style={{backgroundImage: `url(${ctbg_card})`, backgroundPosition: '0px -80px', color: '#FFFFF3' }}>

@@ -1,4 +1,5 @@
 import React from 'react';
+import {withRouter} from 'react-router-dom';
 import {
   Menu, Dropdown, Icon, Button, message, Input,
 } from 'antd';
@@ -28,8 +29,11 @@ class SwitchNetwork extends React.Component {
     };
 
     this.codeClick = async (e) => {
-      this.props.updateCode(e.key);
+      console.log('codeClick', e.key);
+      this.props.history.push(`/${e.key}`);
+      await eosplayer.getScatterAsync();
       await this.tryGetCode(e.key);
+      this.props.updateCode(e.key);
     };
 
     this.tryGetCode = async (key) => {
@@ -69,6 +73,7 @@ class SwitchNetwork extends React.Component {
   }
 
   async componentDidMount() {
+    console.log('componentDidMount', this.props.tab);
     eosplayer.events.setEvent(
       'ERR_GET_IDENTITY_FAILED',
       (e) => {
@@ -91,7 +96,9 @@ class SwitchNetwork extends React.Component {
     // this.props.updateIdentity(await eosplayer.getIdentity());
     // this.props.updateAccountInfo(await eosplayer.getAccountInfo());
     await eosplayer.getScatterAsync();
-    if (!!this.props.code && this.props.code !== '') { this.codeClick({key: codes[0]}); }
+    if (!!this.props.tab && this.props.tab !== '') this.props.updateCode(this.props.tab);
+    console.log(this.props.tab, this.props.code);
+    await this.tryGetCode(this.props.code);
   }
 
   render() {
@@ -128,7 +135,7 @@ class SwitchNetwork extends React.Component {
   }
 }
 
-export default connect(
+export default withRouter(connect(
   state => ({ ...state.accounts }),
   { updateAccountInfo, updateIdentity, updateCode },
-)(SwitchNetwork);
+)(SwitchNetwork));
