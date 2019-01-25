@@ -13,6 +13,7 @@ const codes = [
   'ctserver2113',
   'ctserver2114',
   'ctserver2115',
+  'ctserver5111',
 ];
 
 class SwitchNetwork extends React.Component {
